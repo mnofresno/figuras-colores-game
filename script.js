@@ -1,22 +1,12 @@
-const items = [
-    { name: 'Tambor', iconClass: 'drum-icon', audio: 'tambor.mp3' },
-    { name: 'Auto', iconClass: 'car-icon', audio: 'auto.mp3' },
-    { name: 'Avión', iconClass: 'plane-icon', audio: 'avion.mp3' },
-    { name: 'Tijeras', iconClass: 'scissors-icon', audio: 'tijeras.mp3' },
-    { name: 'Robot', iconClass: 'robot-icon', audio: 'robot.mp3' },
-    { name: 'Lámpara', iconClass: 'lamp-icon', audio: 'lampara.mp3' },
-    { name: 'Mate', iconClass: 'mate-icon', audio: 'mate.mp3' },
-    { name: 'Martillo', iconClass: 'file-icon', audio: 'lima.mp3' },
-    { name: 'Guante', iconClass: 'glove-icon', audio: 'guante.mp3' }
-];
-
 let currentWord = '';
 let currentItems = [];
 
 // Inicializar el juego
 function initGame() {
-    // Seleccionar 9 elementos al azar de la lista de ítems
-    currentItems = items.slice(0, 9); // Siempre usaremos los primeros 9 elementos de la lista
+    // Seleccionar una categoría al azar
+    const categoryNames = Object.keys(categories);
+    const randomCategoryName = categoryNames[Math.floor(Math.random() * categoryNames.length)];
+    currentItems = categories[randomCategoryName];
 
     // Elegir una palabra al azar de esos elementos
     const randomIndex = Math.floor(Math.random() * currentItems.length);
@@ -50,7 +40,7 @@ function loadOptions() {
     optionsSection.innerHTML = '';
     
     // Crear botones de opciones
-    currentItems.forEach((item, index) => {
+    currentItems.forEach((item) => {
         const button = document.createElement('button');
         button.classList.add(item.iconClass);
         button.onclick = () => checkAnswer(item.name);

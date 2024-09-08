@@ -29,7 +29,7 @@ body {
 
 button {
     margin: 10px;
-    padding: 20px;
+    padding: 0; /* Eliminar el padding para centrado adecuado */
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -57,47 +57,150 @@ button::before {
     margin-top: 20px;
 }
 
-/* Estilos para los iconos */
-.triangle-icon::before {
-    content: "\25B2"; /* Unicode para triángulo */
-}
-
+/* Iconos para objetos */
 .drum-icon::before {
-    content: "\1F941"; /* Unicode para tambor */
+    content: "\1F941"; /* Tambor */
 }
 
 .car-icon::before {
-    content: "\1F697"; /* Unicode para auto */
+    content: "\1F697"; /* Auto */
 }
 
 .plane-icon::before {
-    content: "\2708"; /* Unicode para avión */
-}
-
-.table-icon::before {
-    content: "\1F4A1"; /* Unicode para lámpara */
+    content: "\2708"; /* Avión */
 }
 
 .scissors-icon::before {
-    content: "\2702"; /* Unicode para tijeras */
+    content: "\2702"; /* Tijeras */
 }
 
 .robot-icon::before {
-    content: "\1F916"; /* Unicode para robot */
+    content: "\1F916"; /* Robot */
 }
 
 .lamp-icon::before {
-    content: "\1F4A1"; /* Unicode para lámpara */
+    content: "\1F4A1"; /* Lámpara */
 }
 
 .mate-icon::before {
-    content: "\1F9C9"; /* Unicode para mate */
+    content: "\1F9C9"; /* Mate */
 }
 
-.file-icon::before {
-    content: "\1F528"; /* Unicode para lima */
+.hammer-icon::before {
+    content: "\1F528"; /* Martillo */
 }
 
 .glove-icon::before {
-    content: "\1F9E4"; /* Unicode para guante */
+    content: "\1F9E4"; /* Guante */
+}
+
+/* Iconos para animales */
+.cat-icon::before {
+    content: "\1F408"; /* Gato */
+}
+
+.dog-icon::before {
+    content: "\1F415"; /* Perro */
+}
+
+.lion-icon::before {
+    content: "\1F981"; /* León */
+}
+
+.elephant-icon::before {
+    content: "\1F418"; /* Elefante */
+}
+
+.tiger-icon::before {
+    content: "\1F405"; /* Tigre */
+}
+
+.monkey-icon::before {
+    content: "\1F412"; /* Mono */
+}
+
+.bird-icon::before {
+    content: "\1F426"; /* Pájaro */
+}
+
+.frog-icon::before {
+    content: "\1F438"; /* Rana */
+}
+
+.fish-icon::before {
+    content: "\1F41F"; /* Pez */
+}
+
+/* Iconos para números */
+.one-icon::before {
+    content: "\0031\20E3"; /* Número 1 */
+}
+
+.two-icon::before {
+    content: "\0032\20E3"; /* Número 2 */
+}
+
+.three-icon::before {
+    content: "\0033\20E3"; /* Número 3 */
+}
+
+.four-icon::before {
+    content: "\0034\20E3"; /* Número 4 */
+}
+
+.five-icon::before {
+    content: "\0035\20E3"; /* Número 5 */
+}
+
+.six-icon::before {
+    content: "\0036\20E3"; /* Número 6 */
+}
+
+.seven-icon::before {
+    content: "\0037\20E3"; /* Número 7 */
+}
+
+.eight-icon::before {
+    content: "\0038\20E3"; /* Número 8 */
+}
+
+.nine-icon::before {
+    content: "\0039\20E3"; /* Número 9 */
+}
+
+/* Iconos para figuras geométricas */
+.circle-icon::before {
+    content: "\25CF"; /* Círculo */
+}
+
+.square-icon::before {
+    content: "\25A0"; /* Cuadrado */
+}
+
+.triangle-icon::before {
+    content: "\25B2"; /* Triángulo */
+}
+
+.rectangle-icon::before {
+    content: "\25AD"; /* Rectángulo */
+}
+
+.pentagon-icon::before {
+    content: "\2B1F"; /* Pentágono */
+}
+
+.hexagon-icon::before {
+    content: "\2B22"; /* Hexágono */
+}
+
+.star-icon::before {
+    content: "\2B50"; /* Estrella */
+}
+
+.diamond-icon::before {
+    content: "\25C6"; /* Rombo */
+}
+
+.oval-icon::before {
+    content: "\25EF"; /* Óvalo */
 }
