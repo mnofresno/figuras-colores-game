@@ -105,6 +105,3 @@ function playSound(audioFile, callback) {
     };
     audio.play().catch(error => console.error('Error reproduciendo el audio:', error));
 }
-
-// Iniciar el juego al cargar la página
-document.getElementById('start-button').addEventListener('click', startGame);
