@@ -1,12 +1,14 @@
 let currentWord = '';
 let currentItems = [];
+let currentCategory = '';
+let isAudioPlaying = false;  // Variable para controlar la reproducción de audio
 
 // Inicializar el juego
 function initGame() {
     // Seleccionar una categoría al azar
     const categoryNames = Object.keys(categories);
-    const randomCategoryName = categoryNames[Math.floor(Math.random() * categoryNames.length)];
-    currentItems = categories[randomCategoryName];
+    currentCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];
+    currentItems = categories[currentCategory];
 
     // Elegir una palabra al azar de esos elementos
     const randomIndex = Math.floor(Math.random() * currentItems.length);
@@ -15,9 +17,14 @@ function initGame() {
     // Mostrar la palabra que se debe buscar
     showWordToFind(currentWord);
 
-    // Reproducir el sonido de la palabra a buscar
-    const audioFile = getAudioFilePath(currentWord);
-    playSound(audioFile);
+    // Reproducir el sonido de la categoría y luego la instrucción
+    const categoryAudioFile = `audio/categoria_${currentCategory}.mp3`;
+    const searchAudioFile = `audio/busca_${currentWord.toLowerCase()}.mp3`;
+    playSound(categoryAudioFile, () => {
+        playSound(searchAudioFile, () => {
+            isAudioPlaying = false;  // El audio terminó de reproducirse
+        });
+    });
 
     // Cargar las opciones
     loadOptions();
@@ -44,7 +51,11 @@ function loadOptions() {
     currentItems.forEach((item) => {
         const button = document.createElement('button');
         button.classList.add(item.iconClass);
-        button.onclick = () => checkAnswer(item.name);
+        button.onclick = () => {
+            if (!isAudioPlaying) {  // Solo permitir clics si no hay audio reproduciéndose
+                checkAnswer(item.name);
+            }
+        };
         optionsSection.appendChild(button);
     });
 }
@@ -54,17 +65,20 @@ function checkAnswer(selectedName) {
     
     if (selectedName === currentWord) {
         feedbackElement.textContent = '¡Bien hecho! Has acertado!';
-        playSound('audio/correct.mp3');  // Reproduce el audio "correct.mp3"
-        // Cargar nueva palabra al azar
-        initGame();
+        isAudioPlaying = true;  // Indicar que el audio está reproduciéndose
+        const randomCorrectIndex = Math.floor(Math.random() * 5);  // Elegir aleatoriamente una de las 5 frases
+        playSound(`audio/correct_${randomCorrectIndex}.mp3`, initGame);  // Reproduce el audio de felicitación
     } else {
         feedbackElement.textContent = 'Uf, inténtalo de nuevo.';
-        playSound('audio/incorrect.mp3');  // Reproduce el audio "incorrect.mp3"
+        isAudioPlaying = true;  // Indicar que el audio está reproduciéndose
+        const randomIncorrectIndex = Math.floor(Math.random() * 5);  // Elegir aleatoriamente una de las 5 frases
+        playSound(`audio/incorrect_${randomIncorrectIndex}.mp3`, () => { isAudioPlaying = false; });  // Reproduce el audio de error
     }
 }
 
-function playSound(audioFile) {
+function playSound(audioFile, callback) {
     const audio = new Audio(audioFile);
+    audio.onended = callback;  // Ejecutar la callback cuando termine el audio
     audio.play();
 }
 

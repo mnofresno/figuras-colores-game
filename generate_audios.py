@@ -1,5 +1,6 @@
 from gtts import gTTS
 import os
+import random
 
 # Lista de palabras que necesitas convertir a audio
 words = [
@@ -9,11 +10,31 @@ words = [
     'Círculo', 'Cuadrado', 'Triángulo', 'Rectángulo', 'Pentágono', 'Hexágono', 'Estrella', 'Rombo', 'Óvalo'
 ]
 
-# Palabras adicionales para felicitaciones y error
+# Frases adicionales para felicitaciones y error
 feedback_words = {
-    'correct': '¡Bien hecho! Has acertado!',
-    'incorrect': 'Uf, inténtalo de nuevo.'
+    'correct': [
+        '¡Bien hecho! Has acertado!',
+        '¡Excelente! Sigue así.',
+        '¡Correcto! Muy buen trabajo.',
+        '¡Perfecto! Lo hiciste genial.',
+        '¡Bravo! Has elegido bien.'
+    ],
+    'incorrect': [
+        'Uf, inténtalo de nuevo.',
+        'No es correcto, prueba otra vez.',
+        '¡Casi! Sigue intentándolo.',
+        'No acertaste, intenta otra vez.',
+        'Esa no es la opción, prueba de nuevo.'
+    ]
 }
+
+# Frases para las categorías
+categories = [
+    'objetos',
+    'animales',
+    'números',
+    'figuras'
+]
 
 # Directorio de destino para guardar los audios
 audio_dir = 'audio'
@@ -37,6 +58,19 @@ for word in words:
     generate_audio(word, word, audio_file_path)
 
 # Generar audios para las felicitaciones y el error
-for key, text in feedback_words.items():
-    audio_file_path = os.path.join(audio_dir, f"{key}.mp3")
-    generate_audio(key, text, audio_file_path)
+for key, phrases in feedback_words.items():
+    for i, text in enumerate(phrases):
+        audio_file_path = os.path.join(audio_dir, f"{key}_{i}.mp3")
+        generate_audio(f"{key}_{i}", text, audio_file_path)
+
+# Generar audios para las categorías
+for category in categories:
+    text = f"Vamos a aprender los {category}"
+    audio_file_path = os.path.join(audio_dir, f"categoria_{category}.mp3")
+    generate_audio(f"categoria_{category}", text, audio_file_path)
+
+# Generar audios para la instrucción "BUSCA EL:"
+for word in words:
+    text = f"Busca el {word}"
+    audio_file_path = os.path.join(audio_dir, f"busca_{word.lower()}.mp3")
+    generate_audio(f"busca_{word.lower()}", text, audio_file_path)
