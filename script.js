@@ -1,6 +1,22 @@
 const questions = [
-    { question: 'Busca el tambor', options: ['Triángulo', 'Tambor', 'Cuadrado'], correct: 1 },
-    { question: 'Busca el triángulo', options: ['Círculo', 'Cuadrado', 'Triángulo'], correct: 2 },
+    {
+        question: 'Busca el tambor',
+        options: [
+            { iconClass: 'triangle-icon', name: 'Triángulo' },
+            { iconClass: 'drum-icon', name: 'Tambor' },
+            { iconClass: 'square-icon', name: 'Cuadrado' }
+        ],
+        correct: 1
+    },
+    {
+        question: 'Busca el triángulo',
+        options: [
+            { iconClass: 'circle-icon', name: 'Círculo' },
+            { iconClass: 'square-icon', name: 'Cuadrado' },
+            { iconClass: 'triangle-icon', name: 'Triángulo' }
+        ],
+        correct: 2
+    }
 ];
 
 let currentQuestionIndex = 0;
@@ -23,7 +39,7 @@ function loadQuestion() {
     // Crear botones de opciones
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement('button');
-        button.textContent = option;
+        button.classList.add(option.iconClass);
         button.onclick = () => checkAnswer(index);
         optionsSection.appendChild(button);
     });
