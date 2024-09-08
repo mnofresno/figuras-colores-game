@@ -3,8 +3,22 @@ let currentItems = [];
 let currentCategory = '';
 let isAudioPlaying = false;  // Variable para controlar la reproducción de audio
 
+// Función para comenzar el juego
+function startGame() {
+    // Ocultar el botón de comenzar después del primer clic
+    document.getElementById('start-button').style.display = 'none';
+    initGame();
+}
+
 // Inicializar el juego
 function initGame() {
+    // Mostrar los elementos visuales antes de reproducir cualquier audio
+    setupRound();
+    playIntroAudio();
+}
+
+// Configurar una nueva ronda
+function setupRound() {
     // Seleccionar una categoría al azar
     const categoryNames = Object.keys(categories);
     currentCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];
@@ -17,17 +31,23 @@ function initGame() {
     // Mostrar la palabra que se debe buscar
     showWordToFind(currentWord);
 
-    // Reproducir el sonido de la categoría y luego la instrucción
+    // Cargar las opciones
+    loadOptions();
+}
+
+// Reproducir los audios de introducción y de búsqueda
+function playIntroAudio() {
     const categoryAudioFile = `audio/categoria_${currentCategory}.mp3`;
     const searchAudioFile = `audio/busca_${currentWord.toLowerCase()}.mp3`;
+
+    isAudioPlaying = true;  // Indicar que el audio está reproduciéndose
+
+    // Reproducir primero el audio de la categoría y luego la instrucción "BUSCA EL"
     playSound(categoryAudioFile, () => {
         playSound(searchAudioFile, () => {
             isAudioPlaying = false;  // El audio terminó de reproducirse
         });
     });
-
-    // Cargar las opciones
-    loadOptions();
 }
 
 // Mostrar la palabra a buscar en el cuadro
@@ -79,19 +99,12 @@ function checkAnswer(selectedName) {
 function playSound(audioFile, callback) {
     const audio = new Audio(audioFile);
     audio.onended = callback;  // Ejecutar la callback cuando termine el audio
-    audio.play();
-}
-
-// Obtener la ruta del archivo de audio correspondiente a la palabra
-function getAudioFilePath(word) {
-    // Convertir la palabra a minúsculas y reemplazar espacios y caracteres especiales
-    const normalizedWord = word
-        .toLowerCase()
-        .normalize("NFD") // Normalizar caracteres Unicode (por ejemplo, acentos)
-        .replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
-
-    return `audio/${normalizedWord}.mp3`;
+    audio.onerror = () => {
+        console.error('Error al cargar el archivo de audio:', audioFile);
+        callback();  // Continuar con el flujo de juego incluso si hay un error
+    };
+    audio.play().catch(error => console.error('Error reproduciendo el audio:', error));
 }
 
 // Iniciar el juego al cargar la página
-initGame();
+document.getElementById('start-button').addEventListener('click', startGame);

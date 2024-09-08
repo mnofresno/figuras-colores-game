@@ -16,6 +16,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 300px;  /* Ajusta el ancho según sea necesario */
+    margin-bottom: 20px;  /* Añadir un margen inferior */
 }
 
 #question-section {
@@ -48,13 +49,27 @@ button:hover {
     background-color: #45a049;
 }
 
-button::before {
-    font-size: 30px; /* Tamaño del icono */
-}
-
 #feedback {
     font-size: 24px;
     margin-top: 20px;
+}
+
+/* Estilos para el botón de inicio */
+#start-button {
+    padding: 15px 30px; /* Tamaño del botón */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    width: 10em;
+}
+
+#start-button:hover {
+    background-color: #45a049;
 }
 
 /* Iconos para objetos */

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Educativo</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="items.js" defer></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="game-container">
@@ -19,5 +17,11 @@
         </div>
         <p id="feedback"></p>
     </div>
+    <!-- Botón para comenzar -->
+    <button id="start-button" onclick="startGame()">Comenzar</button>
+
+    <!-- Incluye el archivo items.js antes de script.js -->
+    <script src="items.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
