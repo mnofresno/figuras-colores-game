@@ -16,7 +16,8 @@ function initGame() {
     showWordToFind(currentWord);
 
     // Reproducir el sonido de la palabra a buscar
-    playSound(currentItems[randomIndex].audio);
+    const audioFile = getAudioFilePath(currentWord);
+    playSound(audioFile);
 
     // Cargar las opciones
     loadOptions();
@@ -53,18 +54,29 @@ function checkAnswer(selectedName) {
     
     if (selectedName === currentWord) {
         feedbackElement.textContent = '¡Bien hecho! Has acertado!';
-        playSound('correct.mp3');
+        playSound('audio/correct.mp3');  // Reproduce el audio "correct.mp3"
         // Cargar nueva palabra al azar
         initGame();
     } else {
         feedbackElement.textContent = 'Uf, inténtalo de nuevo.';
-        playSound('incorrect.mp3');
+        playSound('audio/incorrect.mp3');  // Reproduce el audio "incorrect.mp3"
     }
 }
 
 function playSound(audioFile) {
     const audio = new Audio(audioFile);
     audio.play();
+}
+
+// Obtener la ruta del archivo de audio correspondiente a la palabra
+function getAudioFilePath(word) {
+    // Convertir la palabra a minúsculas y reemplazar espacios y caracteres especiales
+    const normalizedWord = word
+        .toLowerCase()
+        .normalize("NFD") // Normalizar caracteres Unicode (por ejemplo, acentos)
+        .replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
+
+    return `audio/${normalizedWord}.mp3`;
 }
 
 // Iniciar el juego al cargar la página

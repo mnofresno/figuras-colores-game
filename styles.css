@@ -133,44 +133,44 @@ button::before {
 
 /* Iconos para números */
 .one-icon::before {
-    content: "\0031\20E3"; /* Número 1 */
+    content: "1"; /* Número 1 sin el cuadro */
 }
 
 .two-icon::before {
-    content: "\0032\20E3"; /* Número 2 */
+    content: "2"; /* Número 2 sin el cuadro */
 }
 
 .three-icon::before {
-    content: "\0033\20E3"; /* Número 3 */
+    content: "3"; /* Número 3 sin el cuadro */
 }
 
 .four-icon::before {
-    content: "\0034\20E3"; /* Número 4 */
+    content: "4"; /* Número 4 sin el cuadro */
 }
 
 .five-icon::before {
-    content: "\0035\20E3"; /* Número 5 */
+    content: "5"; /* Número 5 sin el cuadro */
 }
 
 .six-icon::before {
-    content: "\0036\20E3"; /* Número 6 */
+    content: "6"; /* Número 6 sin el cuadro */
 }
 
 .seven-icon::before {
-    content: "\0037\20E3"; /* Número 7 */
+    content: "7"; /* Número 7 sin el cuadro */
 }
 
 .eight-icon::before {
-    content: "\0038\20E3"; /* Número 8 */
+    content: "8"; /* Número 8 sin el cuadro */
 }
 
 .nine-icon::before {
-    content: "\0039\20E3"; /* Número 9 */
+    content: "9"; /* Número 9 sin el cuadro */
 }
 
 /* Iconos para figuras geométricas */
 .circle-icon::before {
-    content: "\25CF"; /* Círculo */
+    content: "\2B24"; /* Círculo grande en lugar de óvalo */
 }
 
 .square-icon::before {
@@ -201,6 +201,7 @@ button::before {
     content: "\25C6"; /* Rombo */
 }
 
+/* Reemplazo de óvalo por círculo */
 .oval-icon::before {
-    content: "\25EF"; /* Óvalo */
+    content: "\2B24"; /* Círculo grande */
 }
