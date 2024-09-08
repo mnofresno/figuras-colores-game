@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f8ff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -14,6 +15,16 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;  /* Ajusta el ancho según sea necesario */
+}
+
+#question-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button {
@@ -37,6 +48,10 @@ button:hover {
     background-color: #45a049;
 }
 
+button::before {
+    font-size: 30px; /* Tamaño del icono */
+}
+
 #feedback {
     font-size: 24px;
     margin-top: 20px;
@@ -51,10 +66,38 @@ button:hover {
     content: "\1F941"; /* Unicode para tambor */
 }
 
-.square-icon::before {
-    content: "\25A0"; /* Unicode para cuadrado */
+.car-icon::before {
+    content: "\1F697"; /* Unicode para auto */
 }
 
-.circle-icon::before {
-    content: "\25CF"; /* Unicode para círculo */
+.plane-icon::before {
+    content: "\2708"; /* Unicode para avión */
+}
+
+.table-icon::before {
+    content: "\1F4A1"; /* Unicode para lámpara */
+}
+
+.scissors-icon::before {
+    content: "\2702"; /* Unicode para tijeras */
+}
+
+.robot-icon::before {
+    content: "\1F916"; /* Unicode para robot */
+}
+
+.lamp-icon::before {
+    content: "\1F4A1"; /* Unicode para lámpara */
+}
+
+.mate-icon::before {
+    content: "\1F9C9"; /* Unicode para mate */
+}
+
+.file-icon::before {
+    content: "\1F528"; /* Unicode para lima */
+}
+
+.glove-icon::before {
+    content: "\1F9E4"; /* Unicode para guante */
 }
