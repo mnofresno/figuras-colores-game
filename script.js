@@ -7,6 +7,7 @@ let isAudioPlaying = false;  // Variable para controlar la reproducción de audi
 function startGame() {
     // Ocultar el botón de comenzar después del primer clic
     document.getElementById('start-button').style.display = 'none';
+    document.getElementById('question-section').style.display = 'block';
     initGame();
 }
 

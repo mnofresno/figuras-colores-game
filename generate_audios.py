@@ -28,13 +28,13 @@ feedback_words = {
     ]
 }
 
-# Frases para las categorías
-categories = [
-    'objetos',
-    'animales',
-    'números',
-    'figuras'
-]
+# Frases para las categorías y sus conectores
+categories = {
+    'objetos': 'los',
+    'animales': 'los',
+    'números': 'los',
+    'figuras': 'las'
+}
 
 # Directorio de destino para guardar los audios
 audio_dir = 'audio'
@@ -63,9 +63,9 @@ for key, phrases in feedback_words.items():
         audio_file_path = os.path.join(audio_dir, f"{key}_{i}.mp3")
         generate_audio(f"{key}_{i}", text, audio_file_path)
 
-# Generar audios para las categorías
-for category in categories:
-    text = f"Vamos a aprender los {category}"
+# Generar audios para las categorías con el conector correcto
+for category, connector in categories.items():
+    text = f"Vamos a aprender {connector} {category}"
     audio_file_path = os.path.join(audio_dir, f"categoria_{category}.mp3")
     generate_audio(f"categoria_{category}", text, audio_file_path)
 
